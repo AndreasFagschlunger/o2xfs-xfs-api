@@ -29,7 +29,7 @@ package at.o2xfs.xfs.cdm;
 
 import at.o2xfs.xfs.XfsConstant;
 
-public enum Reason implements XfsConstant {
+public enum NoteErrorReason implements XfsConstant {
 
 	/*
 	 * @since v3.00
@@ -88,7 +88,7 @@ public enum Reason implements XfsConstant {
 
 	private final long value;
 
-	private Reason(final long value) {
+	private NoteErrorReason(final long value) {
 		this.value = value;
 	}
 
