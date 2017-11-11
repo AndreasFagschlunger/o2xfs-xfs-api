@@ -29,7 +29,7 @@ package at.o2xfs.xfs.idc;
 
 import at.o2xfs.xfs.XfsConstant;
 
-public enum MemoryChipProtocols implements XfsConstant {
+public enum MemoryChipProtocol implements XfsConstant {
 
 	/*
 	 * @since v3.10
@@ -43,7 +43,7 @@ public enum MemoryChipProtocols implements XfsConstant {
 
 	private final long value;
 
-	private MemoryChipProtocols(final long value) {
+	private MemoryChipProtocol(final long value) {
 		this.value = value;
 	}
 
