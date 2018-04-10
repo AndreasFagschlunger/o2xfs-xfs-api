@@ -25,35 +25,26 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package at.o2xfs.xfs.ptr;
+package at.o2xfs.xfs.win32;
 
-import at.o2xfs.xfs.XfsConstant;
+import java.util.Collections;
+import java.util.Map;
 
-public enum BackImageColorFormat implements XfsConstant {
+import at.o2xfs.win32.Pointer;
+import at.o2xfs.win32.ValueType;
 
-	/*
-	 * @since v3.00
-	 */
-	BINARY(0x0001),
+public class XfsUnicodeMap extends Pointer implements ValueType<Map<String, String>> {
 
-	/*
-	 * @since v3.00
-	 */
-	GRAYSCALE(0x0002),
+	private static final byte[] EOF = new byte[4];
 
-	/*
-	 * @since v3.00
-	 */
-	FULL(0x0004);
+	@Override
+	public void set(Map<String, String> value) {
+		// TODO Auto-generated method stub
 
-	private final long value;
-
-	private BackImageColorFormat(final long value) {
-		this.value = value;
 	}
 
 	@Override
-	public long getValue() {
-		return value;
+	public Map<String, String> get() {
+		return Collections.emptyMap();
 	}
 }

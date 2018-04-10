@@ -29,31 +29,26 @@ package at.o2xfs.xfs.ptr;
 
 import at.o2xfs.xfs.XfsConstant;
 
-public enum BackImageFormat implements XfsConstant {
+public enum ImageColorFormat implements XfsConstant {
 
 	/*
 	 * @since v3.00
 	 */
-	TIF(0x0001),
+	BINARY(0x0001),
 
 	/*
 	 * @since v3.00
 	 */
-	WMF(0x0002),
+	GRAYSCALE(0x0002),
 
 	/*
 	 * @since v3.00
 	 */
-	BMP(0x0004),
-
-	/*
-	 * @since v3.10
-	 */
-	JPG(0x0008);
+	FULL(0x0004);
 
 	private final long value;
 
-	private BackImageFormat(final long value) {
+	private ImageColorFormat(final long value) {
 		this.value = value;
 	}
 
