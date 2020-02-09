@@ -34,17 +34,17 @@ public enum TellerUpdateAction implements XfsConstant {
 	/*
 	 * @since v3.00
 	 */
-	CREATE_TELLER(1L),
+	CREATE(1L),
 
 	/*
 	 * @since v3.00
 	 */
-	MODIFY_TELLER(2L),
+	MODIFY(2L),
 
 	/*
 	 * @since v3.00
 	 */
-	DELETE_TELLER(3L);
+	DELETE(3L);
 
 	private final long value;
 

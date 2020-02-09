@@ -8,12 +8,11 @@ import at.o2xfs.memory.databind.BeanProperty;
 import at.o2xfs.memory.databind.DeserializationContext;
 import at.o2xfs.memory.databind.MemoryDeserializer;
 import at.o2xfs.memory.databind.ReadableMemory;
-import at.o2xfs.memory.databind.deser.ContextualDeserializer;
 import at.o2xfs.memory.databind.deser.std.StdDeserializer;
 import at.o2xfs.memory.databind.type.JavaType;
 import at.o2xfs.xfs.databind.annotation.XfsGuidLights;
 
-public class GuidLightsDeserializer extends StdDeserializer<List<Set<Object>>> implements ContextualDeserializer {
+public class GuidLightsDeserializer extends StdDeserializer<List<Set<Object>>> {
 
 	private final int length;
 

@@ -12,20 +12,18 @@ import at.o2xfs.xfs.databind.ser.UnitIdSerializer;
 @MemoryDeserialize(using = UnitIdDeserializer.class)
 public final class UnitId {
 
+	private static final UnitId EMPTY = UnitId.of('\0', '\0', '\0', '\0', '\0');
+
 	public static final int BYTES = 5;
-	private static final UnitId EMPTY = UnitId.of(new String(new byte[BYTES]));
 
-	private final String value;
+	private final char[] value;
 
-	private UnitId(String value) {
-		if (value.length() != BYTES) {
-			throw new IllegalArgumentException(value);
-		}
-		this.value = value;
+	private UnitId(char c1, char c2, char c3, char c4, char c5) {
+		value = new char[] { c1, c2, c3, c4, c5 };
 	}
 
-	public String getValue() {
-		return value;
+	public char[] getValue() {
+		return value.clone();
 	}
 
 	@Override
@@ -44,14 +42,14 @@ public final class UnitId {
 
 	@Override
 	public String toString() {
-		return value;
+		return new String(value);
 	}
 
 	public static UnitId empty() {
 		return EMPTY;
 	}
 
-	public static UnitId of(String value) {
-		return new UnitId(value);
+	public static UnitId of(char c1, char c2, char c3, char c4, char c5) {
+		return new UnitId(c1, c2, c3, c4, c5);
 	}
 }

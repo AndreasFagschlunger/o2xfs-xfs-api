@@ -7,13 +7,12 @@ import at.o2xfs.memory.databind.BeanProperty;
 import at.o2xfs.memory.databind.DeserializationContext;
 import at.o2xfs.memory.databind.MemoryDeserializer;
 import at.o2xfs.memory.databind.ReadableMemory;
-import at.o2xfs.memory.databind.deser.ContextualDeserializer;
 import at.o2xfs.memory.databind.deser.std.StdDeserializer;
 import at.o2xfs.memory.databind.deser.win32.ULongDeserializer;
 import at.o2xfs.memory.databind.type.CollectionType;
 import at.o2xfs.xfs.XfsConstant;
 
-public class XfsEnumSet32Deserializer extends StdDeserializer<Set<Object>> implements ContextualDeserializer {
+public class XfsEnumSet32Deserializer extends StdDeserializer<Set<Object>> {
 
 	public XfsEnumSet32Deserializer() {
 		this(null);
