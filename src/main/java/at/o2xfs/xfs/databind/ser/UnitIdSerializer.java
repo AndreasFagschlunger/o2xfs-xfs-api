@@ -11,6 +11,6 @@ public class UnitIdSerializer extends MemorySerializer<UnitId> {
 
 	@Override
 	public void serialize(UnitId value, MemoryGenerator gen, SerializerProvider provider) {
-		gen.write(value.getValue().getBytes(StandardCharsets.US_ASCII));
+		gen.write(value.toString().getBytes(StandardCharsets.US_ASCII));
 	}
 }
