@@ -8,12 +8,13 @@ import at.o2xfs.memory.databind.BeanProperty;
 import at.o2xfs.memory.databind.DeserializationContext;
 import at.o2xfs.memory.databind.MemoryDeserializer;
 import at.o2xfs.memory.databind.ReadableMemory;
+import at.o2xfs.memory.databind.type.JavaType;
 import at.o2xfs.xfs.XfsConstant;
 import at.o2xfs.xfs.databind.annotation.XfsGuidLights;
 
 public class GuidLightsDeserializer<E extends Enum<E> & XfsConstant> extends MemoryDeserializer<List<Set<E>>> {
 
-	private Class<E> valueClass;
+	private JavaType valueClass;
 	private final int length;
 
 	public GuidLightsDeserializer() {
@@ -21,7 +22,7 @@ public class GuidLightsDeserializer<E extends Enum<E> & XfsConstant> extends Mem
 		length = 0;
 	}
 
-	protected GuidLightsDeserializer(Class<E> valueClass, int length) {
+	protected GuidLightsDeserializer(JavaType valueClass, int length) {
 		this.valueClass = valueClass;
 		this.length = length;
 	}
@@ -29,7 +30,7 @@ public class GuidLightsDeserializer<E extends Enum<E> & XfsConstant> extends Mem
 	@Override
 	public List<Set<E>> deserialize(ReadableMemory memory, DeserializationContext ctxt) {
 		List<Set<E>> result = new ArrayList<>(length);
-		XfsEnumSet32Deserializer<E> enumSetDeserializer = new XfsEnumSet32Deserializer<>(valueClass);
+		XfsEnumSet32Deserializer<E> enumSetDeserializer = new XfsEnumSet32Deserializer<>(valueClass, false);
 		for (int i = 0; i < length; i++) {
 			result.add(enumSetDeserializer.deserialize(memory, ctxt));
 		}
@@ -40,7 +41,6 @@ public class GuidLightsDeserializer<E extends Enum<E> & XfsConstant> extends Mem
 	public MemoryDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) {
 		XfsGuidLights guidLights = property.getMember().getAnnotation(XfsGuidLights.class);
 		return new GuidLightsDeserializer(
-				property.getType().getBindings().getBoundType(0).getBindings().getBoundType(0).getRawClass(),
-				guidLights.length());
+				property.getType().getBindings().getBoundType(0).getBindings().getBoundType(0), guidLights.length());
 	}
 }

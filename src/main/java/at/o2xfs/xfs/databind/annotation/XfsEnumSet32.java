@@ -15,4 +15,6 @@ import at.o2xfs.xfs.databind.ser.XfsEnumSet32Serializer;
 @MemoryDeserialize(using = XfsEnumSet32Deserializer.class)
 public @interface XfsEnumSet32 {
 
+	boolean zeroTerminated() default false;
+
 }

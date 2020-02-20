@@ -5,7 +5,6 @@ import at.o2xfs.memory.databind.DeserializationContext;
 import at.o2xfs.memory.databind.MemoryDeserializer;
 import at.o2xfs.memory.databind.ReadableMemory;
 import at.o2xfs.memory.databind.deser.std.StdDeserializer;
-import at.o2xfs.memory.databind.deser.win32.UShortDeserializer;
 import at.o2xfs.xfs.XfsConstant;
 
 public class XfsEnum16Deserializer extends StdDeserializer<Object> {
@@ -21,7 +20,7 @@ public class XfsEnum16Deserializer extends StdDeserializer<Object> {
 	@Override
 	public Object deserialize(ReadableMemory memory, DeserializationContext ctxt) {
 		Object result = null;
-		long value = UShortDeserializer.instance.deserialize(memory, ctxt).longValue();
+		long value = memory.nextUnsignedShort();
 		for (Object each : valueClass.getEnumConstants()) {
 			if (((XfsConstant) each).getValue() == value) {
 				result = each;
