@@ -1,6 +1,6 @@
 package at.o2xfs.xfs.databind.deser;
 
-import java.util.HashSet;
+import java.util.EnumSet;
 import java.util.Set;
 
 import at.o2xfs.memory.databind.BeanProperty;
@@ -13,7 +13,7 @@ import at.o2xfs.memory.databind.type.TypeFactory;
 import at.o2xfs.xfs.XfsConstant;
 import at.o2xfs.xfs.databind.annotation.XfsEnumSet32;
 
-public class XfsEnumSet32Deserializer<E extends Enum<E> & XfsConstant> extends StdDeserializer<Set<E>> {
+public class XfsEnumSet32Deserializer<E extends Enum<E> & XfsConstant> extends StdDeserializer<EnumSet<E>> {
 
 	private final JavaType enumType;
 	private final boolean zeroTerminated;
@@ -28,9 +28,24 @@ public class XfsEnumSet32Deserializer<E extends Enum<E> & XfsConstant> extends S
 		this.zeroTerminated = zeroTerminated;
 	}
 
+	private EnumSet<E> constructSet() {
+		return EnumSet.noneOf((Class<E>) enumType.getRawClass());
+	}
+
+	private void deserialize(long bitmask, EnumSet<E> result) {
+		for (Object each : enumType.getRawClass().getEnumConstants()) {
+			XfsConstant constant = (XfsConstant) each;
+			if (constant.getValue() == 0L) {
+				continue;
+			} else if ((bitmask & constant.getValue()) == constant.getValue()) {
+				result.add((E) each);
+			}
+		}
+	}
+
 	@Override
-	public Set<E> deserialize(ReadableMemory memory, DeserializationContext ctxt) {
-		Set<E> result = new HashSet<>();
+	public EnumSet<E> deserialize(ReadableMemory memory, DeserializationContext ctxt) {
+		EnumSet<E> result = constructSet();
 		if (zeroTerminated) {
 			long value = 0L;
 			while ((value = memory.nextUnsignedLong()) != 0L) {
@@ -42,15 +57,7 @@ public class XfsEnumSet32Deserializer<E extends Enum<E> & XfsConstant> extends S
 				}
 			}
 		} else {
-			long value = memory.nextUnsignedLong();
-			for (Object each : enumType.getRawClass().getEnumConstants()) {
-				XfsConstant constant = (XfsConstant) each;
-				if (constant.getValue() == 0L) {
-					continue;
-				} else if ((value & constant.getValue()) == constant.getValue()) {
-					result.add((E) each);
-				}
-			}
+			deserialize(memory.nextUnsignedLong(), result);
 		}
 		return result;
 	}
