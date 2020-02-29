@@ -30,58 +30,51 @@ package at.o2xfs.xfs;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import at.o2xfs.memory.databind.annotation.MemoryDeserialize;
+import at.o2xfs.memory.databind.annotation.MemorySerialize;
+import at.o2xfs.xfs.databind.deser.XfsVersionDeserializer;
+import at.o2xfs.xfs.databind.ser.XfsVersionSerializer;
 import at.o2xfs.xfs.util.XFSUtils;
 
 /**
  * @author Andreas Fagschlunger
  */
-public class XfsVersion implements Comparable<XfsVersion> {
+@MemorySerialize(using = XfsVersionSerializer.class)
+@MemoryDeserialize(using = XfsVersionDeserializer.class)
+public final class XfsVersion implements Comparable<XfsVersion> {
 
 	/**
 	 * Release 2.00
 	 */
-	public final static XfsVersion V2_00 = new XfsVersion("2.00");
+	public final static XfsVersion V2_00 = XfsVersion.of("2.00");
 
 	/**
 	 * Release 3.00
 	 */
-	public final static XfsVersion V3_00 = new XfsVersion("3.00");
+	public final static XfsVersion V3_00 = XfsVersion.of("3.00");
 
 	/**
 	 * Release 3.10
 	 */
-	public final static XfsVersion V3_10 = new XfsVersion("3.10");
+	public final static XfsVersion V3_10 = XfsVersion.of("3.10");
 
 	/**
 	 * Release 3.20
 	 */
-	public final static XfsVersion V3_20 = new XfsVersion("3.20");
+	public final static XfsVersion V3_20 = XfsVersion.of("3.20");
 
 	/**
 	 * Release 3.30
 	 */
-	public final static XfsVersion V3_30 = new XfsVersion("3.30");
+	public final static XfsVersion V3_30 = XfsVersion.of("3.30");
 
-	private int majorVersion = 0;
+	private final int majorVersion;
 
-	private int minorVersion = 0;
+	private final int minorVersion;
 
-	public XfsVersion(final String version) {
-		parseVersion(version);
-	}
-
-	public XfsVersion(final int version) {
-		setVersion(version);
-	}
-
-	private void parseVersion(final String version) {
-		setVersion(XFSUtils.getVersion(version));
-
-	}
-
-	private void setVersion(final int version) {
-		majorVersion = version & 0xFF;
-		minorVersion = (version >>> 8 & 0xFF);
+	private XfsVersion(int majorVersion, int minorVersion) {
+		this.majorVersion = majorVersion;
+		this.minorVersion = minorVersion;
 	}
 
 	public int getMajorVersion() {
@@ -93,11 +86,11 @@ public class XfsVersion implements Comparable<XfsVersion> {
 	}
 
 	public int intValue() {
-		int v = 0;
-		v |= minorVersion;
-		v <<= 8;
-		v |= majorVersion;
-		return v;
+		int result = 0;
+		result |= minorVersion;
+		result <<= 8;
+		result |= majorVersion;
+		return result;
 	}
 
 	/**
@@ -142,7 +135,7 @@ public class XfsVersion implements Comparable<XfsVersion> {
 
 	@Override
 	public int compareTo(final XfsVersion version) {
-		if (version == null || majorVersion > version.majorVersion) {
+		if (majorVersion > version.majorVersion) {
 			return 1;
 		} else if (majorVersion < version.majorVersion) {
 			return -1;
@@ -165,7 +158,10 @@ public class XfsVersion implements Comparable<XfsVersion> {
 	public boolean equals(final Object obj) {
 		if (obj instanceof XfsVersion) {
 			final XfsVersion v = (XfsVersion) obj;
-			return new EqualsBuilder().append(majorVersion, v.majorVersion).append(minorVersion, v.minorVersion).isEquals();
+			return new EqualsBuilder()
+					.append(majorVersion, v.majorVersion)
+					.append(minorVersion, v.minorVersion)
+					.isEquals();
 		}
 		return false;
 	}
@@ -173,5 +169,13 @@ public class XfsVersion implements Comparable<XfsVersion> {
 	@Override
 	public String toString() {
 		return String.format("%d.%02d", Integer.valueOf(majorVersion), Integer.valueOf(minorVersion));
+	}
+
+	public static XfsVersion of(String s) {
+		return XfsVersion.of(XFSUtils.getVersion(s));
+	}
+
+	public static XfsVersion of(final int version) {
+		return new XfsVersion(version & 0xFF, (version >>> 8) & 0xFF);
 	}
 }
