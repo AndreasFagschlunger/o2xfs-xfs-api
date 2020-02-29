@@ -44,7 +44,7 @@ import at.o2xfs.xfs.siu.SIUServiceExceptionFactory;
  *
  * @author Andreas Fagschlunger
  */
-public abstract class XfsException extends Exception {
+public class XfsException extends Exception {
 
 	private static List<AbstractXfsExceptionFactory> exceptionFactories = null;
 
@@ -80,6 +80,10 @@ public abstract class XfsException extends Exception {
 		return enumType.cast(error);
 	}
 
+	public long getErrorCode() {
+		return ((XfsConstant) error).getValue();
+	}
+
 	public static void throwFor(final long errorCode) throws XfsException {
 		if (XfsError.SUCCESS.getValue() == errorCode) {
 			return;
@@ -93,7 +97,7 @@ public abstract class XfsException extends Exception {
 		throw new IllegalArgumentException("Unknown error code: " + errorCode);
 	}
 
-	public long getErrorCode() {
-		return ((XfsConstant) error).getValue();
+	public static <E extends Enum<E> & XfsConstant> XfsException of(E error) {
+		return new XfsException(error);
 	}
 }

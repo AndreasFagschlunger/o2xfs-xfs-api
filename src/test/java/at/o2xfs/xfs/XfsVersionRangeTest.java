@@ -27,35 +27,37 @@
 
 package at.o2xfs.xfs;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 public class XfsVersionRangeTest {
 
 	@Test
 	public void fromV3_00ToV3_10() {
 		XfsVersionRange range = new XfsVersionRange(XfsVersion.V3_00, XfsVersion.V3_10);
-		Assert.assertFalse(range.contains(XfsVersion.V2_00));
-		Assert.assertTrue(range.contains(XfsVersion.V3_00));
-		Assert.assertTrue(range.contains(XfsVersion.V3_10));
-		Assert.assertFalse(range.contains(XfsVersion.V3_20));
+		assertFalse(range.contains(XfsVersion.V2_00));
+		assertTrue(range.contains(XfsVersion.V3_00));
+		assertTrue(range.contains(XfsVersion.V3_10));
+		assertFalse(range.contains(XfsVersion.V3_20));
 	}
 
 	@Test
 	public void fromV3_00ToNull() {
 		XfsVersionRange range = new XfsVersionRange(XfsVersion.V3_00, null);
-		Assert.assertFalse(range.contains(XfsVersion.V2_00));
-		Assert.assertTrue(range.contains(XfsVersion.V3_00));
-		Assert.assertTrue(range.contains(XfsVersion.V3_10));
-		Assert.assertTrue(range.contains(XfsVersion.V3_20));
+		assertFalse(range.contains(XfsVersion.V2_00));
+		assertTrue(range.contains(XfsVersion.V3_00));
+		assertTrue(range.contains(XfsVersion.V3_10));
+		assertTrue(range.contains(XfsVersion.V3_20));
 	}
 
 	@Test
 	public void fromNullToV3_10() {
 		XfsVersionRange range = new XfsVersionRange(null, XfsVersion.V3_10);
-		Assert.assertTrue(range.contains(XfsVersion.V2_00));
-		Assert.assertTrue(range.contains(XfsVersion.V3_00));
-		Assert.assertTrue(range.contains(XfsVersion.V3_10));
-		Assert.assertFalse(range.contains(XfsVersion.V3_20));
+		assertTrue(range.contains(XfsVersion.V2_00));
+		assertTrue(range.contains(XfsVersion.V3_00));
+		assertTrue(range.contains(XfsVersion.V3_10));
+		assertFalse(range.contains(XfsVersion.V3_20));
 	}
 }

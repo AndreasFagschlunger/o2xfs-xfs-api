@@ -27,7 +27,6 @@
 
 package at.o2xfs.xfs;
 
-import at.o2xfs.xfs.conf.CfgNoMoreItemsException;
 import at.o2xfs.xfs.util.XfsConstants;
 
 /**
@@ -45,8 +44,6 @@ public class XfsServiceExceptionFactory extends AbstractXfsExceptionFactory {
 		switch (xfsError) {
 		case CANCELED:
 			throw new XfsCancelledException();
-		case CFG_NO_MORE_ITEMS:
-			throw new CfgNoMoreItemsException();
 		default:
 			throw new XfsServiceException(xfsError);
 		}

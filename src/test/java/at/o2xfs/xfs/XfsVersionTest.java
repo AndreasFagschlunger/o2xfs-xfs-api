@@ -27,72 +27,72 @@
 
 package at.o2xfs.xfs;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class XfsVersionTest {
 
 	@Test
 	public void version_00() {
-		final XfsVersion version = new XfsVersion(".00");
+		final XfsVersion version = XfsVersion.of(".00");
 		assertEquals(0x0000, version.intValue());
 		assertEquals("0.00", version.toString());
 	}
 
 	@Test
 	public void version1_00() {
-		final XfsVersion version = new XfsVersion("1.00");
+		final XfsVersion version = XfsVersion.of("1.00");
 		assertEquals(0x0001, version.intValue());
 		assertEquals("1.00", version.toString());
 	}
 
 	@Test
 	public void version1_11() {
-		final XfsVersion version = new XfsVersion("1.11");
+		final XfsVersion version = XfsVersion.of("1.11");
 		assertEquals(0x0B01, version.intValue());
 		assertEquals("1.11", version.toString());
 	}
 
 	@Test
 	public void version2_00() {
-		final XfsVersion version = new XfsVersion("2.0");
+		final XfsVersion version = XfsVersion.of("2.0");
 		assertEquals(0x0002, version.intValue());
 		assertEquals("2.00", version.toString());
 	}
 
 	@Test
 	public void version2_3() {
-		final XfsVersion version = new XfsVersion("2.3");
+		final XfsVersion version = XfsVersion.of("2.3");
 		assertEquals(0x0302, version.intValue());
 		assertEquals("2.03", version.toString());
 	}
 
 	@Test
 	public void version2_20() {
-		final XfsVersion version = new XfsVersion("2.20");
+		final XfsVersion version = XfsVersion.of("2.20");
 		assertEquals(0x1402, version.intValue());
 		assertEquals("2.20", version.toString());
 	}
 
 	@Test
 	public void version3_11() {
-		final XfsVersion version = new XfsVersion("3.11");
+		final XfsVersion version = XfsVersion.of("3.11");
 		assertEquals(0x0B03, version.intValue());
 		assertEquals("3.11", version.toString());
 	}
 
 	@Test
 	public void version255_255() {
-		XfsVersion version = new XfsVersion("255.255");
+		XfsVersion version = XfsVersion.of("255.255");
 		assertEquals(0xFFFF, version.intValue());
 		assertEquals("255.255", version.toString());
 	}
 
 	@Test
 	public void compareMajor() {
-		final XfsVersion v2_00 = new XfsVersion("2.00");
-		final XfsVersion v3_00 = new XfsVersion("3.00");
+		final XfsVersion v2_00 = XfsVersion.of("2.00");
+		final XfsVersion v3_00 = XfsVersion.of("3.00");
 		assertEquals(false, v2_00.isGE(v3_00));
 		assertEquals(true, v3_00.isGE(v2_00));
 		assertEquals(true, v3_00.isGE(v3_00));
@@ -100,8 +100,8 @@ public class XfsVersionTest {
 
 	@Test
 	public void compareMinor() {
-		final XfsVersion v3_03 = new XfsVersion("3.03");
-		final XfsVersion v3_11 = new XfsVersion("3.11");
+		final XfsVersion v3_03 = XfsVersion.of("3.03");
+		final XfsVersion v3_11 = XfsVersion.of("3.11");
 		assertEquals(false, v3_03.isGE(v3_11));
 		assertEquals(true, v3_03.isGE(v3_03));
 		assertEquals(true, v3_11.isGE(v3_03));
@@ -109,8 +109,8 @@ public class XfsVersionTest {
 
 	@Test
 	public void compareLessThan() {
-		final XfsVersion v3_00 = new XfsVersion("3.00");
-		final XfsVersion v2_00 = new XfsVersion("2.00");
+		final XfsVersion v3_00 = XfsVersion.of("3.00");
+		final XfsVersion v2_00 = XfsVersion.of("2.00");
 		assertEquals(true, v2_00.isLT(v3_00));
 		assertEquals(false, v3_00.isLT(v2_00));
 		assertEquals(false, v2_00.isLT(v2_00));

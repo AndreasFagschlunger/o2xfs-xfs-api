@@ -27,31 +27,33 @@
 
 package at.o2xfs.xfs;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
 import at.o2xfs.xfs.idc.IDCServiceException;
 import at.o2xfs.xfs.pin.PINServiceException;
 
-import org.junit.Test;
-
 public class XfsExceptionTest {
 
-	@Test(expected = XfsServiceException.class)
+	@Test
 	public void internalError() throws Exception {
-		XfsException.throwFor(-15L);
+		assertThrows(XfsServiceException.class, () -> XfsException.throwFor(-15L));
 	}
 
-	@Test(expected = XfsCancelledException.class)
+	@Test
 	public void xfsCanceledException() throws Exception {
-		XfsException.throwFor(-4);
+		assertThrows(XfsCancelledException.class, () -> XfsException.throwFor(-4));
 	}
 
-	@Test(expected = IDCServiceException.class)
+	@Test
 	public void idcServiceException() throws Exception {
-		XfsException.throwFor(-200);
+		assertThrows(IDCServiceException.class, () -> XfsException.throwFor(-200));
 	}
 
-	@Test(expected = PINServiceException.class)
+	@Test
 	public void pinServiceException() throws Exception {
-		XfsException.throwFor(-411);
+		assertThrows(PINServiceException.class, () -> XfsException.throwFor(-411));
 	}
 
 }
