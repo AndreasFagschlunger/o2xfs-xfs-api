@@ -54,10 +54,10 @@ repositories {
 
 dependencies {
     api("at.o2xfs:o2xfs-memory-databind:1.0-SNAPSHOT")
-    api("at.o2xfs:o2xfs-win32:1.0-SNAPSHOT")
     implementation("at.o2xfs:o2xfs-log:1.0-SNAPSHOT")
     implementation("org.apache.commons:commons-lang3:3.9")
-    testImplementation("junit:junit:4.12")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
 }
 
 publishing {

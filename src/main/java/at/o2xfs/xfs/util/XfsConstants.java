@@ -33,19 +33,12 @@ import java.util.Set;
 import at.o2xfs.common.Assert;
 import at.o2xfs.log.Logger;
 import at.o2xfs.log.LoggerFactory;
-import at.o2xfs.win32.NumberType;
 import at.o2xfs.xfs.XfsConstant;
 
+@Deprecated
 public class XfsConstants {
 
 	private static final Logger LOG = LoggerFactory.getLogger(XfsConstants.class);
-
-	public static final <E extends Enum<E> & XfsConstant> E valueOf(final NumberType<?> value, final Class<E> xfsConstantType) {
-		if (value == null) {
-			throw new IllegalArgumentException("value must not be null");
-		}
-		return XfsConstants.valueOf(value.longValue(), xfsConstantType);
-	}
 
 	public static final <E extends Enum<E> & XfsConstant> E valueOf(final long value, final Class<E> xfsConstantType) {
 		if (xfsConstantType == null) {
@@ -63,15 +56,6 @@ public class XfsConstants {
 		return null;
 	}
 
-	@Deprecated
-	public static final <E extends Enum<E> & XfsConstant> Set<E> of(final NumberType<?> value, final Class<E> xfsConstantType) {
-		if (value == null) {
-			throw new IllegalArgumentException("value must not be null");
-		}
-		return of(value.longValue(), xfsConstantType);
-	}
-
-	@Deprecated
 	public static final <E extends Enum<E> & XfsConstant> Set<E> of(final long value, final Class<E> type) {
 		Assert.notNull(type);
 		final EnumSet<E> enumSet = EnumSet.noneOf(type);
