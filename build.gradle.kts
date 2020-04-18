@@ -34,8 +34,8 @@ group = "at.o2xfs"
 version = "1.0-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_13
+    targetCompatibility = JavaVersion.VERSION_13
     withJavadocJar()
     withSourcesJar()
 }
@@ -56,8 +56,8 @@ dependencies {
     api("at.o2xfs:o2xfs-memory-databind:1.0-SNAPSHOT")
     implementation("at.o2xfs:o2xfs-log:1.0-SNAPSHOT")
     implementation("org.apache.commons:commons-lang3:3.9")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")
 }
 
 publishing {
