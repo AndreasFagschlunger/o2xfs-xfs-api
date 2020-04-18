@@ -27,55 +27,55 @@
 
 package at.o2xfs.xfs.idc;
 
-import at.o2xfs.xfs.XfsConstant;
-import at.o2xfs.xfs.XfsDeviceState;
+import at.o2xfs.xfs.api.DeviceState;
+import at.o2xfs.xfs.api.XfsConstant;
 
 public enum IdcDeviceState implements XfsConstant {
 
 	/*
 	 * @since v3.00
 	 */
-	ONLINE(XfsDeviceState.ONLINE.getValue()),
+	ONLINE(DeviceState.ONLINE.getValue()),
 
 	/*
 	 * @since v3.00
 	 */
-	OFFLINE(XfsDeviceState.OFFLINE.getValue()),
+	OFFLINE(DeviceState.OFFLINE.getValue()),
 
 	/*
 	 * @since v3.00
 	 */
-	POWEROFF(XfsDeviceState.POWEROFF.getValue()),
+	POWEROFF(DeviceState.POWEROFF.getValue()),
 
 	/*
 	 * @since v3.00
 	 */
-	NODEVICE(XfsDeviceState.NODEVICE.getValue()),
+	NODEVICE(DeviceState.NODEVICE.getValue()),
 
 	/*
 	 * @since v3.00
 	 */
-	HWERROR(XfsDeviceState.HWERROR.getValue()),
+	HWERROR(DeviceState.HWERROR.getValue()),
 
 	/*
 	 * @since v3.00
 	 */
-	USERERROR(XfsDeviceState.USERERROR.getValue()),
+	USERERROR(DeviceState.USERERROR.getValue()),
 
 	/*
 	 * @since v3.00
 	 */
-	BUSY(XfsDeviceState.BUSY.getValue()),
+	BUSY(DeviceState.BUSY.getValue()),
 
 	/*
 	 * @since v3.10
 	 */
-	FRAUDATTEMPT(XfsDeviceState.FRAUDATTEMPT.getValue()),
+	FRAUDATTEMPT(DeviceState.FRAUDATTEMPT.getValue()),
 
 	/*
 	 * @since v3.20
 	 */
-	POTENTIALFRAUD(XfsDeviceState.POTENTIALFRAUD.getValue());
+	POTENTIALFRAUD(DeviceState.POTENTIALFRAUD.getValue());
 
 	private final long value;
 

@@ -2,7 +2,7 @@ package at.o2xfs.xfs.databind;
 
 import at.o2xfs.memory.databind.annotation.MemoryPropertyOrder;
 import at.o2xfs.memory.databind.annotation.win32.UShort;
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 
 @MemoryPropertyOrder({ "value" })
 public final class XfsEnum16Wrapper {

@@ -27,7 +27,7 @@
 
 package at.o2xfs.xfs.cdm;
 
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 
 public enum CdmMessage implements XfsConstant {
 
@@ -105,11 +105,6 @@ public enum CdmMessage implements XfsConstant {
 	 * @since v3.00
 	 */
 	EXEE_NOTEERROR(316L),
-
-	/*
-	 * @since v3.00
-	 */
-	EXEE_MEDIADETECTED(317L),
 
 	/*
 	 * @since v3.00

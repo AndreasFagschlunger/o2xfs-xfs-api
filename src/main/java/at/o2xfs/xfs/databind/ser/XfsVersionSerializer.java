@@ -5,7 +5,7 @@ import java.io.IOException;
 import at.o2xfs.memory.core.MemoryGenerator;
 import at.o2xfs.memory.databind.SerializerProvider;
 import at.o2xfs.memory.databind.ser.std.StdSerializer;
-import at.o2xfs.xfs.XfsVersion;
+import at.o2xfs.xfs.api.XfsVersion;
 
 public class XfsVersionSerializer extends StdSerializer<XfsVersion> {
 

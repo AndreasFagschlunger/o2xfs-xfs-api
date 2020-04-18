@@ -27,7 +27,7 @@
 
 package at.o2xfs.xfs.pin;
 
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 
 public enum PINInfoCommand implements XfsConstant {
 
@@ -38,8 +38,6 @@ public enum PINInfoCommand implements XfsConstant {
 
 	/**
 	 * This command is used to retrieve the capabilities of the PIN pad.
-	 *
-	 * @see WFSPINCAPS
 	 */
 	CAPABILITIES(402L),
 

@@ -27,7 +27,7 @@
 
 package at.o2xfs.xfs.pin;
 
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 
 public enum PINFDK implements XfsConstant {
 	WFS_PIN_FK_FDK01(0x00000001L),
