@@ -27,24 +27,24 @@
 
 package at.o2xfs.xfs.siu;
 
-import at.o2xfs.xfs.XfsConstant;
-import at.o2xfs.xfs.XfsDeviceState;
+import at.o2xfs.xfs.api.DeviceState;
+import at.o2xfs.xfs.api.XfsConstant;
 
 public enum SIUDeviceState implements XfsConstant {
 
-	ONLINE(XfsDeviceState.ONLINE),
-	OFFLINE(XfsDeviceState.OFFLINE),
-	POWEROFF(XfsDeviceState.POWEROFF),
-	NODEVICE(XfsDeviceState.NODEVICE),
-	HWERROR(XfsDeviceState.HWERROR),
-	USERERROR(XfsDeviceState.USERERROR),
-	BUSY(XfsDeviceState.BUSY),
-	FRAUDATTEMPT(XfsDeviceState.FRAUDATTEMPT),
-	POTENTIALFRAUD(XfsDeviceState.POTENTIALFRAUD);
+	ONLINE(DeviceState.ONLINE),
+	OFFLINE(DeviceState.OFFLINE),
+	POWEROFF(DeviceState.POWEROFF),
+	NODEVICE(DeviceState.NODEVICE),
+	HWERROR(DeviceState.HWERROR),
+	USERERROR(DeviceState.USERERROR),
+	BUSY(DeviceState.BUSY),
+	FRAUDATTEMPT(DeviceState.FRAUDATTEMPT),
+	POTENTIALFRAUD(DeviceState.POTENTIALFRAUD);
 
 	private final long value;
 
-	private SIUDeviceState(final XfsDeviceState deviceState) {
+	private SIUDeviceState(final DeviceState deviceState) {
 		this.value = deviceState.getValue();
 	}
 

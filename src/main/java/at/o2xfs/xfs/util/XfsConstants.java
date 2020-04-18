@@ -33,9 +33,8 @@ import java.util.Set;
 import at.o2xfs.common.Assert;
 import at.o2xfs.log.Logger;
 import at.o2xfs.log.LoggerFactory;
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 
-@Deprecated
 public class XfsConstants {
 
 	private static final Logger LOG = LoggerFactory.getLogger(XfsConstants.class);

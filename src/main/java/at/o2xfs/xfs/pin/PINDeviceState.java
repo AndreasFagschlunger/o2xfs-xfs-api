@@ -27,65 +27,65 @@
 
 package at.o2xfs.xfs.pin;
 
-import at.o2xfs.xfs.XfsConstant;
-import at.o2xfs.xfs.XfsDeviceState;
+import at.o2xfs.xfs.api.DeviceState;
+import at.o2xfs.xfs.api.XfsConstant;
 
 public enum PINDeviceState implements XfsConstant {
 
 	/**
-	 * {@link XfsDeviceState#ONLINE}
+	 * {@link at.o2xfs.xfs.api.DeviceState#ONLINE}
 	 */
-	ONLINE(XfsDeviceState.ONLINE),
+	ONLINE(DeviceState.ONLINE),
 
 	/**
-	 * {@link XfsDeviceState#OFFLINE}
+	 * {@link at.o2xfs.xfs.api.DeviceState#OFFLINE}
 	 */
-	OFFLINE(XfsDeviceState.OFFLINE),
+	OFFLINE(DeviceState.OFFLINE),
 
 	/**
-	 * {@link XfsDeviceState#POWEROFF}
+	 * {@link at.o2xfs.xfs.api.DeviceState#POWEROFF}
 	 */
-	POWEROFF(XfsDeviceState.POWEROFF),
+	POWEROFF(DeviceState.POWEROFF),
 
 	/**
-	 * {@link XfsDeviceState#BUSY}
+	 * {@link at.o2xfs.xfs.api.DeviceState#BUSY}
 	 */
-	BUSY(XfsDeviceState.BUSY),
+	BUSY(DeviceState.BUSY),
 
 	/**
-	 * {@link XfsDeviceState#NODEVICE}
+	 * {@link at.o2xfs.xfs.api.DeviceState#NODEVICE}
 	 */
-	NODEVICE(XfsDeviceState.NODEVICE),
+	NODEVICE(DeviceState.NODEVICE),
 
 	/**
-	 * {@link XfsDeviceState#HWERROR}
+	 * {@link at.o2xfs.xfs.api.DeviceState#HWERROR}
 	 */
-	HWERROR(XfsDeviceState.HWERROR),
+	HWERROR(DeviceState.HWERROR),
 
 	/**
-	 * {@link XfsDeviceState#USERERROR}
+	 * {@link at.o2xfs.xfs.api.DeviceState#USERERROR}
 	 */
-	USERERROR(XfsDeviceState.USERERROR),
+	USERERROR(DeviceState.USERERROR),
 
 	/**
 	 * The device is present but has detected a fraud attempt.
 	 *
-	 * {@link XfsDeviceState#FRAUDATTEMPT}
+	 * {@link at.o2xfs.xfs.api.DeviceState#FRAUDATTEMPT}
 	 *
 	 * @since 3.10
 	 */
-	FRAUDATTEMPT(XfsDeviceState.FRAUDATTEMPT),
+	FRAUDATTEMPT(DeviceState.FRAUDATTEMPT),
 
 	/**
-	 * {@link XfsDeviceState#POTENTIALFRAUD}
+	 * {@link at.o2xfs.xfs.api.DeviceState#POTENTIALFRAUD}
 	 *
 	 * @since 3.20
 	 */
-	POTENTIALFRAUD(XfsDeviceState.POTENTIALFRAUD);
+	POTENTIALFRAUD(DeviceState.POTENTIALFRAUD);
 
 	private final long value;
 
-	private PINDeviceState(final XfsDeviceState xfsDeviceState) {
+	private PINDeviceState(final DeviceState xfsDeviceState) {
 		this.value = xfsDeviceState.getValue();
 	}
 

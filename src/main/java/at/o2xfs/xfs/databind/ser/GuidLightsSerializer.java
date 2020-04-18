@@ -7,7 +7,7 @@ import at.o2xfs.memory.core.MemoryGenerator;
 import at.o2xfs.memory.databind.BeanProperty;
 import at.o2xfs.memory.databind.MemorySerializer;
 import at.o2xfs.memory.databind.SerializerProvider;
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 import at.o2xfs.xfs.databind.annotation.XfsGuidLights;
 
 public class GuidLightsSerializer<E extends Enum<E> & XfsConstant> extends MemorySerializer<List<Set<E>>> {

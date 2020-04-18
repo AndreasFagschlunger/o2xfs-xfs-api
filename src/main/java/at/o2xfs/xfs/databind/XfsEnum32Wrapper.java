@@ -2,7 +2,7 @@ package at.o2xfs.xfs.databind;
 
 import at.o2xfs.memory.databind.annotation.MemoryPropertyOrder;
 import at.o2xfs.memory.databind.annotation.win32.ULong;
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 
 @MemoryPropertyOrder({ "value" })
 public final class XfsEnum32Wrapper {
@@ -50,5 +50,9 @@ public final class XfsEnum32Wrapper {
 
 	public static <E extends Enum<E> & XfsConstant> E of(long value, Class<E> enumType) {
 		return new XfsEnum32Wrapper(value).get(enumType);
+	}
+
+	public static <E extends Enum<E> & XfsConstant> XfsEnum32Wrapper build(E value) {
+		return new XfsEnum32Wrapper(value.getValue());
 	}
 }

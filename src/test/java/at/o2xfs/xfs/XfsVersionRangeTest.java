@@ -32,6 +32,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import at.o2xfs.xfs.api.XfsVersion;
+
 public class XfsVersionRangeTest {
 
 	@Test

@@ -27,8 +27,8 @@
 
 package at.o2xfs.xfs.ttu;
 
-import at.o2xfs.xfs.XfsConstant;
-import at.o2xfs.xfs.XfsDeviceState;
+import at.o2xfs.xfs.api.DeviceState;
+import at.o2xfs.xfs.api.XfsConstant;
 
 public enum TTUDevice implements XfsConstant {
 
@@ -36,37 +36,37 @@ public enum TTUDevice implements XfsConstant {
 	 * The device is on-line. The device is present and operational (i.e. not
 	 * busy processing a request and not having a hardware error).
 	 */
-	ONLINE(XfsDeviceState.ONLINE),
+	ONLINE(DeviceState.ONLINE),
 
 	/**
 	 * The device is off-line. The device is present and powered on but it is
 	 * not operational (e.g. a switch may have been used to change it to an
 	 * off-line state).
 	 */
-	OFFLINE(XfsDeviceState.OFFLINE),
+	OFFLINE(DeviceState.OFFLINE),
 
 	/**
 	 * The device is powered off. The device is present, but is currently
 	 * powered off.
 	 */
-	POWEROFF(XfsDeviceState.POWEROFF),
+	POWEROFF(DeviceState.POWEROFF),
 
 	/**
 	 * The device is busy processing a request. The device is present and an
 	 * EXECUTE request is currently being processed.
 	 */
-	BUSY(XfsDeviceState.BUSY),
+	BUSY(DeviceState.BUSY),
 
 	/**
 	 * There is no device connected.
 	 */
-	NODEVICE(XfsDeviceState.NODEVICE),
+	NODEVICE(DeviceState.NODEVICE),
 
 	/**
 	 * The device is inoperable due to a hardware error. The device is present
 	 * but a hardware fault prevents it from being used.
 	 */
-	HWERROR(XfsDeviceState.HWERROR),
+	HWERROR(DeviceState.HWERROR),
 
 	/**
 	 * The device is present but a person is preventing proper operation. The
@@ -75,22 +75,22 @@ public enum TTUDevice implements XfsConstant {
 	 * indicating the condition of the device has changed i.e. the error is
 	 * removed ({@link #ONLINE}) or a permanent error condition has occurred ( {@link #HWERROR}).
 	 */
-	USERERROR(XfsDeviceState.USERERROR),
+	USERERROR(DeviceState.USERERROR),
 
 	/**
 	 *
 	 */
-	FRAUDATTEMPT(XfsDeviceState.FRAUDATTEMPT),
+	FRAUDATTEMPT(DeviceState.FRAUDATTEMPT),
 
 	/**
 	 *
 	 * @since 3.20
 	 */
-	POTENTIALFRAUD(XfsDeviceState.POTENTIALFRAUD);
+	POTENTIALFRAUD(DeviceState.POTENTIALFRAUD);
 
 	private final long value;
 
-	private TTUDevice(final XfsDeviceState deviceState) {
+	private TTUDevice(final DeviceState deviceState) {
 		this.value = deviceState.getValue();
 	}
 

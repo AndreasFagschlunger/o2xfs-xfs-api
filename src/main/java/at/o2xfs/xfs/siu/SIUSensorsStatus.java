@@ -27,7 +27,7 @@
 
 package at.o2xfs.xfs.siu;
 
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 import at.o2xfs.xfs.util.XfsConstants;
 
 import java.util.HashMap;

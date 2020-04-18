@@ -27,7 +27,7 @@
 
 package at.o2xfs.xfs.ptr;
 
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 
 public enum ReadForm implements XfsConstant {
 

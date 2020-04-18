@@ -9,7 +9,7 @@ import at.o2xfs.memory.databind.DeserializationContext;
 import at.o2xfs.memory.databind.MemoryDeserializer;
 import at.o2xfs.memory.databind.ReadableMemory;
 import at.o2xfs.memory.databind.type.JavaType;
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 import at.o2xfs.xfs.databind.annotation.XfsGuidLights;
 
 public class GuidLightsDeserializer<E extends Enum<E> & XfsConstant> extends MemoryDeserializer<List<Set<E>>> {

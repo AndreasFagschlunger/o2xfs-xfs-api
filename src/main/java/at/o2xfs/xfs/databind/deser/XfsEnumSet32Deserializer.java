@@ -10,7 +10,7 @@ import at.o2xfs.memory.databind.ReadableMemory;
 import at.o2xfs.memory.databind.deser.std.StdDeserializer;
 import at.o2xfs.memory.databind.type.JavaType;
 import at.o2xfs.memory.databind.type.TypeFactory;
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 import at.o2xfs.xfs.databind.annotation.XfsEnumSet32;
 
 public class XfsEnumSet32Deserializer<E extends Enum<E> & XfsConstant> extends StdDeserializer<EnumSet<E>> {

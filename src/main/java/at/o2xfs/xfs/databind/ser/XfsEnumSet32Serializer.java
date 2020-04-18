@@ -8,7 +8,7 @@ import at.o2xfs.memory.databind.BeanProperty;
 import at.o2xfs.memory.databind.MemorySerializer;
 import at.o2xfs.memory.databind.SerializerProvider;
 import at.o2xfs.memory.databind.ser.std.StdSerializer;
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 import at.o2xfs.xfs.databind.annotation.XfsEnumSet32;
 
 public class XfsEnumSet32Serializer<E extends Enum<E> & XfsConstant> extends StdSerializer<Set<E>> {

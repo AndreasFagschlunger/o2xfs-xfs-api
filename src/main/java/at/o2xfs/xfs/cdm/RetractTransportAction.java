@@ -1,6 +1,6 @@
 package at.o2xfs.xfs.cdm;
 
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 
 public enum RetractTransportAction implements XfsConstant {
 

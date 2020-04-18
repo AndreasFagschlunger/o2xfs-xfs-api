@@ -6,7 +6,7 @@ import at.o2xfs.memory.databind.MemoryDeserializer;
 import at.o2xfs.memory.databind.ReadableMemory;
 import at.o2xfs.memory.databind.deser.std.StdDeserializer;
 import at.o2xfs.memory.databind.deser.win32.ULongDeserializer;
-import at.o2xfs.xfs.XfsConstant;
+import at.o2xfs.xfs.api.XfsConstant;
 
 public class XfsEnum32Deserializer extends StdDeserializer<Object> {
 

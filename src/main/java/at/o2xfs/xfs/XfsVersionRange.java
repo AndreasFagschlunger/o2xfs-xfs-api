@@ -27,6 +27,8 @@
 
 package at.o2xfs.xfs;
 
+import at.o2xfs.xfs.api.XfsVersion;
+
 public class XfsVersionRange {
 
 	private final XfsVersion minVersion;
