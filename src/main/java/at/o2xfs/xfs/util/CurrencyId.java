@@ -3,6 +3,9 @@ package at.o2xfs.xfs.util;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import at.o2xfs.memory.databind.annotation.MemoryDeserialize;
 import at.o2xfs.memory.databind.annotation.MemorySerialize;
 import at.o2xfs.xfs.databind.deser.CurrencyIdDeserializer;
@@ -39,6 +42,7 @@ public final class CurrencyId {
 		return false;
 	}
 
+	@JsonValue
 	@Override
 	public String toString() {
 		return value;
@@ -48,6 +52,7 @@ public final class CurrencyId {
 		return new CurrencyId(c1, c2, c3);
 	}
 
+	@JsonCreator
 	public static CurrencyId of(String value) {
 		return of(value.charAt(0), value.charAt(1), value.charAt(2));
 	}
