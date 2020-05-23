@@ -54,6 +54,8 @@ repositories {
 
 dependencies {
     api("at.o2xfs:o2xfs-memory-databind:1.0-SNAPSHOT")
+    api("com.fasterxml.jackson.core:jackson-databind:2.11.0")
+    api("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.11.0")
     implementation("at.o2xfs:o2xfs-log:1.0-SNAPSHOT")
     implementation("org.apache.commons:commons-lang3:3.9")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")

@@ -3,6 +3,9 @@ package at.o2xfs.xfs.util;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import at.o2xfs.memory.databind.annotation.MemoryDeserialize;
 import at.o2xfs.memory.databind.annotation.MemorySerialize;
 import at.o2xfs.xfs.databind.deser.UnitIdDeserializer;
@@ -16,14 +19,15 @@ public final class UnitId {
 
 	public static final int BYTES = 5;
 
-	private final char[] value;
+	private final String value;
 
 	private UnitId(char c1, char c2, char c3, char c4, char c5) {
-		value = new char[] { c1, c2, c3, c4, c5 };
+		value = new String(new char[] { c1, c2, c3, c4, c5 });
 	}
 
-	public char[] getValue() {
-		return value.clone();
+	@JsonValue
+	public String getValue() {
+		return value;
 	}
 
 	@Override
@@ -42,7 +46,7 @@ public final class UnitId {
 
 	@Override
 	public String toString() {
-		return new String(value);
+		return value;
 	}
 
 	public static UnitId empty() {
@@ -51,5 +55,10 @@ public final class UnitId {
 
 	public static UnitId of(char c1, char c2, char c3, char c4, char c5) {
 		return new UnitId(c1, c2, c3, c4, c5);
+	}
+
+	@JsonCreator
+	public static UnitId of(String value) {
+		return new UnitId(value.charAt(0), value.charAt(1), value.charAt(2), value.charAt(3), value.charAt(4));
 	}
 }
